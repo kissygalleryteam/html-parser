@@ -3,6 +3,7 @@
  * @ignore
  * @author yiminghe@gmail.com
  */
+/*jshint -W079 */
 var DTD = require('./html-parser/dtd');
 var Lexer = require('./html-parser/lexer/lexer');
 var Parser = require('./html-parser/parser');

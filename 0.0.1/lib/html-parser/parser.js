@@ -3,7 +3,7 @@
  * parse html to a hierarchy dom tree
  * @author yiminghe@gmail.com
  */
-
+/*jshint -W079 */
 var util = require('./util');
 var dtd = require('./dtd');
 var Tag = require('./nodes/tag');

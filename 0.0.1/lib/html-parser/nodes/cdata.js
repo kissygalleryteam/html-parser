@@ -3,7 +3,7 @@
  * dom text node
  * @author yiminghe@gmail.com
  */
-
+/*jshint -W079 */
 var Text = require('./text');
 var util = require('../util');
 function CData() {

@@ -1,4 +1,4 @@
-//! Copyright 2015, kissy-gallery-html-parser@1.0.2 MIT Licensed, build time: Thu, 05 Feb 2015 08:58:43 GMT 
+//! Copyright 2015, kissy-gallery-html-parser@1.0.2 MIT Licensed, build time: Thu, 05 Feb 2015 09:10:09 GMT 
 define("kg/html-parser/0.0.1/index", [], function(require, exports, module) {
 
 /*
