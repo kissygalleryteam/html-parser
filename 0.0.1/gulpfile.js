@@ -28,11 +28,11 @@ gulp.task('tag',function(done){
 });
     
 gulp.task('lint', function () {
-//    return gulp.src('./lib/**/*.js')
-//        .pipe(jshint())
-//        .pipe(jshint.reporter(stylish))
-//        .pipe(jshint.reporter('fail'))
-//        .pipe(jscs());
+    return gulp.src('./lib/**/*.js')
+        .pipe(jshint())
+        .pipe(jshint.reporter(stylish))
+        .pipe(jshint.reporter('fail'))
+        .pipe(jscs());
 });
 
 gulp.task('clean', function () {
