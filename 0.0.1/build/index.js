@@ -1,4 +1,4 @@
-//! Copyright 2015, kissy-gallery-html-parser@1.0.2 MIT Licensed, build time: Thu, 05 Feb 2015 09:10:09 GMT 
+//! Copyright 2015, kissy-gallery-html-parser@1.0.2 MIT Licensed, build time: Thu, 05 Feb 2015 09:15:19 GMT 
 define("kg/html-parser/0.0.1/index", [], function(require, exports, module) {
 
 /*
@@ -1122,14 +1122,14 @@ htmlParserNodesText = function (exports) {
   return exports;
 }();
 htmlParserNodesCdata = function (exports) {
-  var Text = htmlParserNodesText;
+  var Ptext = htmlParserNodesText;
   var util = htmlParserUtil;
   function CData() {
     CData.superclass.constructor.apply(this, arguments);
     this.nodeType = 4;
     this.nodeName = '#cdata';
   }
-  util.extend(CData, Text, {
+  util.extend(CData, Ptext, {
     writeHtml: function (writer, filter) {
       var ret;
       if (!filter || (ret = filter.onCData(this)) !== false) {
@@ -1410,14 +1410,14 @@ htmlParserNodesTag = function (exports) {
   return exports;
 }();
 htmlParserNodesComment = function (exports) {
-  var Text = htmlParserNodesText;
+  var Ptext = htmlParserNodesText;
   var util = htmlParserUtil;
   function Comment() {
     Comment.superclass.constructor.apply(this, arguments);
     this.nodeType = 8;
     this.nodeName = '#comment';
   }
-  util.extend(Comment, Text, {
+  util.extend(Comment, Ptext, {
     writeHtml: function (writer, filter) {
       var ret;
       if (!filter || (ret = filter.onComment(this)) !== false) {
@@ -1434,7 +1434,7 @@ htmlParserNodesComment = function (exports) {
       if (this.nodeValue) {
         return this.nodeValue;
       } else {
-        var value = Text.superclass.toHtml.apply(this, arguments);
+        var value = Ptext.superclass.toHtml.apply(this, arguments);
         return value.substring(4, value.length - 3);
       }
     }
@@ -2402,7 +2402,7 @@ htmlParserParser = function (exports) {
   var Tag = htmlParserNodesTag;
   var Fragment = htmlParserNodesFragment;
   var Lexer = htmlParserLexerLexer;
-  var Document = htmlParserNodesDocument;
+  var NodeDocument = htmlParserNodesDocument;
   var Scanner = htmlParserScanner;
   function Parser(html, opts) {
     html = util.trim(html);
@@ -2421,7 +2421,7 @@ htmlParserParser = function (exports) {
       var root, doc, lexer = this.lexer, opts = this.opts;
       doc = root = lexer.nextNode();
       if (root.tagName !== 'document') {
-        doc = new Document();
+        doc = new NodeDocument();
         doc.appendChild(root);
       }
       doc.nodeType = 9;
@@ -2548,17 +2548,17 @@ htmlParser = function (exports) {
   var MinifyWriter = htmlParserWriterMinify;
   var Filter = htmlParserWriterFilter;
   var CData = htmlParserNodesCdata;
-  var Comment = htmlParserNodesComment;
+  var NodeComment = htmlParserNodesComment;
   var Tag = htmlParserNodesTag;
-  var Text = htmlParserNodesText;
+  var Ptext = htmlParserNodesText;
   exports = {
     version: '1.0.2',
     Utils: htmlParserUtil,
     CData: CData,
-    Comment: Comment,
+    Comment: NodeComment,
     Node: htmlParserNodesNode,
     Tag: Tag,
-    Text: Text,
+    Text: Ptext,
     Lexer: Lexer,
     Parser: Parser,
     BasicWriter: BasicWriter,

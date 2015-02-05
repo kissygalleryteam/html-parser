@@ -3,8 +3,7 @@
  * comment node (<!-- content -->)
  * @author yiminghe@gmail.com
  */
-/*jshint -W079 */
-var Text = require('./text');
+var Ptext = require('./text');
 var util = require('../util');
 
 function Comment() {
@@ -13,7 +12,7 @@ function Comment() {
     this.nodeName = '#comment';
 }
 
-util.extend(Comment, Text, {
+util.extend(Comment, Ptext, {
     writeHtml: function (writer, filter) {
         var ret;
         if (!filter || (ret = filter.onComment(this)) !== false) {
@@ -30,7 +29,7 @@ util.extend(Comment, Text, {
         if (this.nodeValue) {
             return this.nodeValue;
         } else {
-            var value = Text.superclass.toHtml.apply(this, arguments);
+            var value = Ptext.superclass.toHtml.apply(this, arguments);
             // <!-- -->
             return value.substring(4, value.length - 3);
         }

@@ -3,13 +3,13 @@
  * parse html to a hierarchy dom tree
  * @author yiminghe@gmail.com
  */
-/*jshint -W079 */
+
 var util = require('./util');
 var dtd = require('./dtd');
 var Tag = require('./nodes/tag');
 var Fragment = require('./nodes/fragment');
 var Lexer = require('./lexer/lexer');
-var Document = require('./nodes/document');
+var NodeDocument = require('./nodes/document');
 var Scanner = require('./scanner');
 
 /**
@@ -49,7 +49,7 @@ Parser.prototype = {
         doc = root = lexer.nextNode();
 
         if (root.tagName !== 'document') {
-            doc = new Document();
+            doc = new NodeDocument();
             doc.appendChild(root);
         }
 

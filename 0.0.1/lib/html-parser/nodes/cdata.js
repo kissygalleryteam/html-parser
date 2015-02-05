@@ -3,8 +3,7 @@
  * dom text node
  * @author yiminghe@gmail.com
  */
-/*jshint -W079 */
-var Text = require('./text');
+var Ptext = require('./text');
 var util = require('../util');
 function CData() {
     CData.superclass.constructor.apply(this, arguments);
@@ -12,7 +11,7 @@ function CData() {
     this.nodeName = '#cdata';
 }
 
-util.extend(CData, Text, {
+util.extend(CData, Ptext, {
     writeHtml: function (writer, filter) {
         var ret;
         if (!filter || (ret = filter.onCData(this)) !== false) {

@@ -3,7 +3,6 @@
  * @ignore
  * @author yiminghe@gmail.com
  */
-/*jshint -W079 */
 var DTD = require('./html-parser/dtd');
 var Lexer = require('./html-parser/lexer/lexer');
 var Parser = require('./html-parser/parser');
@@ -12,18 +11,18 @@ var BeautifyWriter = require('./html-parser/writer/beautify');
 var MinifyWriter = require('./html-parser/writer/minify');
 var Filter = require('./html-parser/writer/filter');
 var CData = require('./html-parser/nodes/cdata');
-var Comment = require('./html-parser/nodes/comment');
+var NodeComment = require('./html-parser/nodes/comment');
 var Tag = require('./html-parser/nodes/tag');
-var Text = require('./html-parser/nodes/text');
+var Ptext = require('./html-parser/nodes/text');
 
 module.exports = {
     version: '@VERSION@',
     Utils: require('./html-parser/util'),
     CData: CData,
-    Comment: Comment,
+    Comment: NodeComment,
     Node: require('./html-parser/nodes/node'),
     Tag: Tag,
-    Text: Text,
+    Text: Ptext,
     Lexer: Lexer,
     Parser: Parser,
     BasicWriter: BasicWriter,
